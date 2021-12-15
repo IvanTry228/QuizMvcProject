@@ -30,7 +30,8 @@ namespace QuizMvcProject.Controllers
 
         public IActionResult Question()
         {
-            return View();
+            QuestionModel bufferModel = new QuestionModel();
+            return View(bufferModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

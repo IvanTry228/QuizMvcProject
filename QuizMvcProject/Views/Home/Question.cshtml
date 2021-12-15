@@ -1,8 +1,119 @@
 ﻿@{
-    ViewData["Title"] = "Question Page";
+    ViewData[""] = "";
 }
 
 <div class="text-center">
-    <h1 class="display-4">This is question</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @{
+        Model.testQuestionModelObj.FillRandom();
+    }
+
+    <h1 class="display-4">@Model.testQuestionModelObj.GetText()</h1>
+
+    <p>Станьте миллиардером: <a href="https://parimatch.com/">Вы лучше прожмите</a>.</p>
+
+    <img src="@Model.testQuestionModelObj.GetUrlRef()" alt="testUrl">
+
+    <iframe width="600" height="350" src="https://www.youtube.com/embed/wbLBtPE_GEU" title="YouTube video player"
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+    </iframe>
+
+    <div id="question_144" class="row">
+        <div class="col-sm-12 text_question">
+            <h2>Чи має перевагу пішохід,  якщо переходить дорогу на регульованому пішохідному переході?</h2>
+
+        </div>
+        <div class="col-lg-push-7 col-md-push-7 col-sm-push-7 col-sm-5 col-xs-12 question-img" style="height: 152.625px;">
+            <img class="image_set" src="/themes/greenway/assets/images/no_image_uk.png" alt="Запитання із розділа  - тести ПДР України" title="Чи має перевагу пішохід,  якщо переходить дорогу на регульованому пішохідному переході?">
+        </div>
+        <div class="col-lg-pull-5 col-md-pull-5 col-sm-pull-5 col-sm-7 col-xs-12">
+            <ul class="answers">
+                <li class="red">
+                    <label>Має завжди.</label>
+                </li>
+                <li class="green">
+                    <label>Має за наявності на те відповідного сигналу регулювальника чи світлофора.</label>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-12 col-xs-12">
+            <div class="info-pdd">
+                <p><span class="info-text">Пункти ПДР</span></p>
+                <div class="comment_question">
+                    <p><a rel="nofollow" href="https://green-way.com.ua/uk/dovidniki/pdr-slider/rozdil-4/punkt-16_a" target="_blank" data-href="/dovidniki/pdr-slider/rozdil-4/punkt-16_a" data-content="<div class=&quot;paragraph&quot;><span class=&quot;pdd-red&quot; id=&quot;4-16&quot;>4.16.</span>Пішохід має право:<br /></div><div class=&quot;paragraph&quot;><p><span class=&quot;pdd-red&quot;>а)</span>на перевагу під час переходу проїзної частини позначеними нерегульованими пішохідними переходами, а також регульованими переходами за наявності на те відповідного сигналу регулювальника чи світлофора;</p><div class=&quot;img-pdd&quot;><img src=&quot;/storage/app/media/alina/pdd-ukr_2021/pdd_punkt-4.16.jpg&quot; alt=&quot;ПДР: пішохід має право&quot; title=&quot;ПДР: пішохід має право&quot;></div><div class=&quot;info-pdd expert&quot;><p><span class=&quot;info-text&quot;></span></p><div class=&quot;comment_question&quot;><p><p>Даний пункт Правил дорожнього руху підкреслює перевагу пішоходів під час переходу проїзної частини на позначених нерегульованих пішохідних переходах, а також на регульованих переходах за наявності на те відповідного сигналу регулювальника чи світлофора.</p></p></div></div><a class=&quot;no-desc ask-expert&quot; href=&quot;/dovidniki/pdr-slider/rozdil-4/punkt-16_a#pdd-comments&quot; target=&quot;_blank&quot;>10</a></div>">Пункт 4.16 а) ПДР України</a></p>
+                </div>
+            </div>
+            <div class="info-pdd">
+                <p><span class="info-text">Допомога Експерта</span></p>
+                <div class="comment_question">
+                    <p>Чітку відповідь на це запитання дасть пункт 4.16, згідно з ПДР:</p>
+
+                    <p>«Пішохід має право:</p>
+
+                    <p>a) <u>на перевагу під час переходу проїзної частини позначеними</u> нерегульованими пішохідними переходами, а також <u>регульованими переходами за наявності на те відповідного сигналу регулювальника чи світлофора;</u></p>
+
+                    <p>б) вимагати від органів виконавчої влади, власників автомобільних доріг, вулиць і залізничних переїздів створення умов для забезпечення безпеки дорожнього руху».</p>
+
+                    <p>Нагадаємо, що означає «перевага», згідно з описом терміну, який наведено в пункті 1.10:</p>
+
+                    <p>«<u>Перевага</u><strong>&nbsp;</strong>— право на першочерговий рух стосовно інших учасників дорожнього руху».</p>
+
+                    <p>Очевидно, що правильним варіантом відповіді буде другий, який буквально цитує підпункт «а» пункту 4.16.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-xs-12 social_block">
+        </div>
+        <div class="col-sm-12 col-xs-12 social_block">
+            <div class="like_block" style="opacity: 1; pointer-events: auto;">
+                <div>
+                    <div>
+                        <span class="like_description">Оцініть питання</span>
+                        <span class="like_for_registered">Тільки для зареєстрованих користувачів</span>
+                    </div>
+                    <div id="like_block_144">
+                        <span class="like nonpressed">285</span>
+                        <span class="dislike nonpressed">190</span>
+                    </div>
+                </div>
+                <span data-toggle="modal" data-target="#authorization" class="addtofav" id="addtofav_144" style="cursor: pointer;">
+                    <div class="addtofav_desc">
+                        <span>Додати до обраного</span>
+                    </div>
+                    <div class="img">
+                        <span style="margin-left: 5px; ">
+                            <img src="https://green-way.com.ua/themes/greenway/assets/images/favorite_heart.png" style="margin-bottom: 10px;">
+                        </span>
+                    </div>
+                </span>
+                <div class="addtofav_description"><a href="/uk/test-pdd/favorites" rel="nofollow">Перейти до обраного</a></div>
+            </div>
+        </div>
+    </div>
+
+    @{
+        foreach (var item in Model.testQuestionModelObj.GetVideosList())
+        {
+            <video preload="" muted="" autoplay="" loop="" playsinline="" poster="@item.urlPreviewImg" controls autoplay>
+                <source src="@item.urlSourceVideo" type="video/mp4">
+            </video>
+
+            <video muted="" loop="" controls autoplay>
+                <source src="@item.urlSourceVideo" type="video/mp4">
+                <source src="@item.urlSourceVideo" type="video/ogg">
+                Your browser does not support the video tag.
+            </video>
+        }
+
+        <video src="https://cdn4.telesco.pe/file/792db2cfe9.mp4?token=byc5ZvqmhmDBTcWdMVdGWQTU-VwV4g6sQHfKg8BC1EmHzRO2Sg-755d4pHuyWzKb-SbTGV0bU0_hfcXUAMW0mtSSQK3ZLPiwS_0TjJI2qExxxMWh2SgLhdLWeGe_5fOEq08v6MiOcYxLq08c_RyLHaG6k93LDvdZbevA9SjQQK4xYBV8K5wdukmKmeJPsLjtLqMUZNzJ56nSy00UuBjd9EAmYM4NNEV2MkjSjhWq4MrOgM__AJ_lDWFyTLYP00WI2tORIpzlKVHTnoqvuAPptFb3ljeSaIdTfLXyUzdHVAO2yr8LD9cB4hfTlEWYc5H9DhJCZAepdJ63GxF3IgVAmQ" width="100%" height="100%" preload="" muted="" autoplay="" loop="" playsinline=""></video>
+    }
+
+
+
+    <img src="https://instagram.fiev6-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/c135.0.810.810a/s640x640/69743590_969952650025641_2458297714023069656_n.jpg?_nc_ht=instagram.fiev6-1.fna.fbcdn.net&_nc_cat=109&_nc_ohc=ZqAS7k8t-pkAX-Hzx3z&edm=ABfd0MgBAAAA&ccb=7-4&oh=00_AT9ro3tRdXxeXrsPZMFQcqR1rSRzi93O2GXW0YDe4LFN_g&oe=61C0676F&_nc_sid=7bff83" alt="testUrl">
+
+
+    <script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-post="vlblyadstvo/2" data-width="100%"></script>
+
+
 </div>
