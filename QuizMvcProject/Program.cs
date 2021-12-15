@@ -1,3 +1,4 @@
+using DotNetExtra.DataBaseParsing;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -13,6 +14,8 @@ namespace QuizMvcProject
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine("test start");
+            ParsingAdapter.CallParseProcedure();
             CreateHostBuilder(args).Build().Run();
         }
 
