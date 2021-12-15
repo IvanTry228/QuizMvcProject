@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuizTemplateMvcDotnet6.DatabaseSql;
 
-namespace QuizMvcProject.Migrations
+namespace QuizTemplateMvcDotnet6.Migrations
 {
     [DbContext(typeof(QuizTemplate_DbContext))]
-    [Migration("20211215163613_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20211215165236_DowngradeMigr")]
+    partial class DowngradeMigr
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
