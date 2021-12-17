@@ -29,6 +29,9 @@ namespace DotNetExtra.DataBaseParsing
 
         public static string LogQuestionString(IQuestionItem _argQuestion)
         {
+            if (_argQuestion == null)
+                return "_argQuestion==null";
+
             string logString = "Question id: " + _argQuestion.GetId() + "\n";
 
             logString += " " + _argQuestion.GetQuestionText() + "\n";

@@ -1,15 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using QuizMvcProject.Models;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace QuizMvcProject.Controllers
 {
-    public class HomeController : Controller
+    public partial class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
 
@@ -26,12 +22,6 @@ namespace QuizMvcProject.Controllers
         public IActionResult Privacy()
         {
             return View();
-        }
-
-        public IActionResult Question()
-        {
-            QuestionModel bufferModel = new QuestionModel();
-            return View(bufferModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

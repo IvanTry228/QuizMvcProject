@@ -3,6 +3,44 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Quiz Questions</h1>
+    <h1 class="display-4">Quiz Questions testId"</h1>
+
+    @*<form action="@Html.ActionLink("More information", "GoToApps")">
+            <button type="button" class="btn btn-primary btn-lg"> More information! &raquo;</button>
+        </form>*@
+
+    <a asp-action="Question" asp-route-id="2" class="btn btn-default add-to-cart">
+        <i class="fa fa-shopping-cart"></i>ToBuy
+    </a>
+
+    <a class="btn btn-primary" href="https://localhost:5001/Home/Question" role="button">Link</a>
+
+    <button type="button" class="btn btn-primary btn-lg btn-block" href="https://localhost:5001/Home/Question">Block level button</button>
+
+    <button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>
+
+    <button type="button" class="btn btn-primary btn-lg">
+        Test button!
+        <a href="https://localhost:5001/Home/Question">question</a>
+    </button>
+
+    <div class="send">
+        <a class="btn btn-white singleton"
+           <a href="https://localhost:5001/Home/Question">question</a>
+        </a>
+    </div>
+
+    <div class="send">
+        <a class="btn btn-white singleton"
+           <a href="https://localhost:5001/Home/Question">question</a>
+        </a>
+    </div>
+
+    @*<div class="send">
+            <a class="btn btn-white singleton"
+               onclick= href="https://localhost:5001/Home/Question">
+                Продовжити тестування
+            </a>
+        </div>*@
     <p>Open <a href="https://localhost:5001/Home/Question">question</a>.</p>
 </div>
