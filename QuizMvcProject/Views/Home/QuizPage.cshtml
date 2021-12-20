@@ -11,7 +11,7 @@
         int bufferIndex = 0;
         foreach (var item in Model.GetQuizBase().GetQuestionsList())
         {
-            <a class="btn @item.GetStatusString()" href="~Home/QuizPage/@bufferIndex" role="button">@(bufferIndex + 1)</a>
+            <a class="btn @item.GetStatusString()" href="/Home/QuizPage/@bufferIndex" role="button">@(bufferIndex + 1)</a>
 
             bufferIndex++;
         }

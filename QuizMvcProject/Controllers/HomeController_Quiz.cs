@@ -47,11 +47,13 @@ namespace QuizMvcProject.Controllers
         QuizPageModel fastQuizPageModel = new QuizPageModel(true);
 
         [HttpGet]
-        public IActionResult QuizPage()
+        public IActionResult GetRandomQuiz()
         {
             //MessageModel currentessage = new MessageModel("Qestion with current id not exist = " + id);
             fastQuizPageModel = new QuizPageModel(true);
-            return View(fastQuizPageModel);
+            int defaultId = 0;
+            fastQuizPageModel.GetQuizBase().SetCurrenPointertIndex(defaultId);
+            return RedirectToAction("QuizPage", new { id = defaultId });
         }
 
         [HttpGet]
