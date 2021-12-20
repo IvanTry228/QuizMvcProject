@@ -18,8 +18,10 @@
     }
 
     @*Question:*@
-    @{var currentQuestion = Model.GetQuizBase().GetCurrentQuestion();
-        int currentPointerIndex = Model.GetQuizBase().GetCurrenPointertIndex();}
+    @{
+        var currentQuestion = Model.GetQuizBase().GetCurrentQuestion();
+        int currentPointerIndex = Model.GetQuizBase().GetCurrenPointertIndex();
+    }
 
     <h2>Current Question @(currentPointerIndex + 1)</h2>
     <h2>@currentQuestion.GetQuestionText()</h2>
@@ -31,6 +33,9 @@
         {
             <button type="button" class="btn btn-outline-secondary btn-lg btn-block">@item.GetAnswerText()</button>
         }
+
+        <img src="@currentQuestion.GetUrlRef()" alt="testUrl">
+
     }
 
     @*<button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
