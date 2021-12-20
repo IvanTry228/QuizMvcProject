@@ -1,9 +1,11 @@
 ﻿using DotNetExtra.QuizTemplate;
+using QuizMvcProject.QuizImplementation;
+using QuizMvcProject.QuizTemplate;
 using System.Collections.Generic;
 
 namespace Quick_Quiz.QuizTemplate
 {
-    public interface IQuestionItem  : IDable //: IQuestionItem<T>
+    public interface IQuestionItem  : IDable, IStatusQuestion //: IQuestionItem<T>
     {
         string GetQuestionText();
         bool GetAnsweredState();
@@ -127,6 +129,29 @@ namespace Quick_Quiz.QuizTemplate
         public void SetAnsweredStateByIAnswersList(IList<IAnswerItem> _ianswerItem)
         {
             answeredItemssList = (IList<Tansw>)_ianswerItem;
+        }
+
+        public int GetIndexStatusQuestion()
+        {
+            int statusIndex;
+
+            if (GetAnsweredState())
+            {
+                int pointOfAnswer = GetPointsOfAnswer();
+                if (pointOfAnswer==0)
+                    statusIndex = (int)StatusQuestionAnswered.Wrong;
+                else
+                    statusIndex = (int)StatusQuestionAnswered.Success;
+            }
+            else
+                statusIndex = (int)StatusQuestionAnswered.DefaultNot;
+
+            return statusIndex;
+        }
+
+        public virtual string GetStatusString()
+        {
+            return ViewQuizDictionary.AllButtonsNames[GetIndexStatusQuestion()];
         }
     }
 }
