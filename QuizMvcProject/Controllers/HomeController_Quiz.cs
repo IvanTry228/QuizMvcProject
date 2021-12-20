@@ -44,13 +44,15 @@ namespace QuizMvcProject.Controllers
             return RedirectToAction("Question", new { id = testInt });
         }
 
-        QuizPageModel fastQuizPageModel = new QuizPageModel(true);
+        static QuizPageModel fastQuizPageModel = new QuizPageModel(true);
 
         [HttpGet]
         public IActionResult GetRandomQuiz()
         {
             //MessageModel currentessage = new MessageModel("Qestion with current id not exist = " + id);
-            fastQuizPageModel = new QuizPageModel(true);
+            Console.WriteLine("!!!!!!!!!!!___!!! GetRandomQuiz ");
+
+            //fastQuizPageModel = new QuizPageModel(true);
             int defaultId = 0;
             fastQuizPageModel.GetQuizBase().SetCurrenPointertIndex(defaultId);
             return RedirectToAction("QuizPage", new { id = defaultId });
@@ -59,19 +61,10 @@ namespace QuizMvcProject.Controllers
         [HttpGet]
         public IActionResult QuizPage(int id)
         {
+            Console.WriteLine("!!!!!!!!!!!___!!! QuizPage id = " + id);
             //MessageModel currentessage = new MessageModel("Qestion with current id not exist = " + id);
             fastQuizPageModel.GetQuizBase().SetCurrenPointertIndex(id);
             return View(fastQuizPageModel);
         }
-
-        //[HttpPost]
-        //public IActionResult QuestionNotExist(string dfsdfwe)
-        //{
-        //    string authData = $"Login: {dfsdfwe}";
-        //    Console.WriteLine("QuestionNotExist authData = " + dfsdfwe);
-        //    int testInt = Int32.Parse(dfsdfwe);
-        //    Console.WriteLine("QuestionNotExist testInt = " + testInt);
-        //    return RedirectToAction("Question", new { id = testInt });
-        //}
     }
 }

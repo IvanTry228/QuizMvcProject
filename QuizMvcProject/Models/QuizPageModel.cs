@@ -1,5 +1,6 @@
 ﻿using DotNetExtra.DataBaseParsing;
 using Quick_Quiz.QuizTemplate;
+using System;
 using System.Collections.Generic;
 
 namespace QuizMvcProject.Models
@@ -30,6 +31,7 @@ namespace QuizMvcProject.Models
 
         public QuizPageModel(bool isRandomInit)
         {
+            Console.WriteLine("--QuizPageModel--- isRandomInit =" + isRandomInit);
             if (isRandomInit)
                 FastFillRandom();       
         }
