@@ -43,6 +43,13 @@ namespace QuizMvcProject.Controllers
             return RedirectToAction("Question", new { id = testInt });
         }
 
+        [HttpGet]
+        public IActionResult QuizPage()
+        {
+            //MessageModel currentessage = new MessageModel("Qestion with current id not exist = " + id);
+            return View();
+        }
+
         //[HttpPost]
         //public IActionResult QuestionNotExist(string dfsdfwe)
         //{
