@@ -44,11 +44,21 @@ namespace QuizMvcProject.Controllers
             return RedirectToAction("Question", new { id = testInt });
         }
 
+        QuizPageModel fastQuizPageModel = new QuizPageModel(true);
+
         [HttpGet]
         public IActionResult QuizPage()
         {
             //MessageModel currentessage = new MessageModel("Qestion with current id not exist = " + id);
-            QuizPageModel fastQuizPageModel = new QuizPageModel(true);
+            fastQuizPageModel = new QuizPageModel(true);
+            return View(fastQuizPageModel);
+        }
+
+        [HttpGet]
+        public IActionResult QuizPage(int id)
+        {
+            //MessageModel currentessage = new MessageModel("Qestion with current id not exist = " + id);
+            fastQuizPageModel.GetQuizBase().SetCurrenPointertIndex(id);
             return View(fastQuizPageModel);
         }
 

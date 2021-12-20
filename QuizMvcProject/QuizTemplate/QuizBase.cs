@@ -12,16 +12,20 @@ namespace Quick_Quiz.QuizTemplate
         IList<T> GetQuestionsList();
 
         int GetAllAnsweredCount();
+
         int GetAllQuestionsCount();
 
         int GetAllPointsCount();
 
         int GetCurrenPointertIndex();
 
+        void SetCurrenPointertIndex(int _argIndex);
+
         T GetCurrentQuestion();
 
         T GetQuestionByIndex(int _argIndex);
 
+        void CallNextIndex();
 
         //Timer GetCurrentTimer();
     }
@@ -115,6 +119,16 @@ namespace Quick_Quiz.QuizTemplate
         public IQuestionItem GetCurrentQuestion()
         {
             return GetQuestionsList()[GetCurrenPointertIndex()];
+        }
+
+        public void CallNextIndex()
+        {
+            currentPointerIndex++;
+        }
+
+        public void SetCurrenPointertIndex(int _argIndex)
+        {
+            currentPointerIndex = _argIndex;
         }
     }
 }

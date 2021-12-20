@@ -31,7 +31,7 @@ namespace QuizMvcProject.Models
         public QuizPageModel(bool isRandomInit)
         {
             if (isRandomInit)
-                FastFillRandom();
+                FastFillRandom();       
         }
     }
 }
