@@ -98,6 +98,16 @@ namespace Quick_Quiz
         {
             throw new System.NotImplementedException();
         }
+
+        public int GetIndexStatusQuestion()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public string GetStatusString()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
     public class PddAnswerItem : IAnswerItem

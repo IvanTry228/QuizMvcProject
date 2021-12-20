@@ -87,7 +87,7 @@ namespace Quick_Quiz.QuizTemplate
 
         public IQuestionItem GetQuestionByIndex(int _argIndex)
         {
-            throw new NotImplementedException();
+            return GetQuestionsList()[_argIndex];
         }
 
         public IList<IQuestionItem> GetQuestionsList()
