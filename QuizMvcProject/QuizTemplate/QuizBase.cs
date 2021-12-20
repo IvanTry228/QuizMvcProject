@@ -18,6 +18,8 @@ namespace Quick_Quiz.QuizTemplate
 
         int GetCurrenPointertIndex();
 
+        T GetCurrentQuestion();
+
         T GetQuestionByIndex(int _argIndex);
 
 
@@ -108,6 +110,11 @@ namespace Quick_Quiz.QuizTemplate
 
             //}
             return this;
+        }
+
+        public IQuestionItem GetCurrentQuestion()
+        {
+            return GetQuestionsList()[GetCurrenPointertIndex()];
         }
     }
 }

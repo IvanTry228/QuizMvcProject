@@ -5,6 +5,8 @@
 <div class="text-center">
     <h2>Questions:</h2>
 
+    @*Quiz:*@
+
     @{
         int bufferIndex = 0;
         foreach (var item in Model.GetQuizBase().GetQuestionsList())
@@ -15,7 +17,25 @@
         }
     }
 
+    @*Question:*@
+
     <h2>Current Question @(Model.GetQuizBase().GetCurrenPointertIndex() + 1)</h2>
+
+    <h2>Current Question @(Model.GetQuizBase().GetCurrenPointertIndex() + 1)</h2>
+
+    @{
+        int currentIndexPointerQuestion = Model.GetQuizBase().GetCurrenPointertIndex();
+
+        var currentQuestin = Model.GetQuizBase().GetCurrentQuestion();
+
+        foreach (var item in currentQuestin.GetIAnswersListsOnly())
+        {
+            <button type="button" class="btn btn-outline-secondary btn-lg btn-block">@item.GetAnswerText()</button>
+        }
+    }
+
+    @*<button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+        <button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>*@
 
 
     <h2>@Model.GetQuizBase().GetLogString()</h2>
