@@ -23,7 +23,7 @@
         int currentPointerIndexQuestion = Model.GetQuizBase().GetCurrenPointertIndex();
     }
 
-    <h2>Current Question @(currentPointerIndexQuestion + 1) / @Model.GetQuizBase().GetAllAnsweredCount()</h2>
+    <h2>Current Question @(currentPointerIndexQuestion + 1) / @Model.GetQuizBase().GetAllQuestionsCount()</h2>
     <h2>@currentQuestion.GetQuestionText()</h2>
 
     @{

@@ -44,7 +44,7 @@ namespace QuizMvcProject.Controllers
             return RedirectToAction("Question", new { id = testInt });
         }
 
-        static QuizPageModel fastQuizPageModel = new QuizPageModel(true);
+        static QuizPageModel fastQuizPageModel = new QuizPageModel(true); //static for fast
 
         [HttpGet]
         public IActionResult GetRandomQuiz()
@@ -74,6 +74,7 @@ namespace QuizMvcProject.Controllers
             //MessageModel currentessage = new MessageModel("Qestion with current id not exist = " + id);
             //fastQuizPageModel.GetQuizBase().SetCurrenPointertIndex(id);
             fastQuizPageModel.GetQuizBase().CallAnswerForQuestion(_indexQuestion, _indexAnswer);
+            fastQuizPageModel.GetQuizBase().CallNextIndex();
             return RedirectToAction("QuizPage", new { id = fastQuizPageModel.GetQuizBase().GetCurrenPointertIndex() });
         }
     }
