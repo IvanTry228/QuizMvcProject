@@ -10,6 +10,13 @@ namespace Quick_Quiz.QuizTemplate
         void SetAnsweredState(bool _newIsAnswered);
 
         IList<IAnswerItem> GetIAnswersListsOnly();
+
+        //new
+
+        void SetAnsweredStateByIAnswer(IAnswerItem _ianswerItem);
+        void SetAnsweredStateByIAnswersList(IList<IAnswerItem> _ianswerItem);
+
+        int GetPointsOfAnswer();
     }
 
     public interface IQuestionItem<Tansw> : IQuestionItem where Tansw : IAnswerItem
@@ -29,6 +36,11 @@ namespace Quick_Quiz.QuizTemplate
         public Tpict currentIPictureGetterStringable { get; private set; }
 
         private bool isAnsweredState;
+
+        //new
+        public IList<Tansw> answeredItemssList { get; set; }
+        public Tansw answeredItemSingle { get; set; }
+
 
         public IQuestionItem<Tansw> SetAnswersList(IList<Tansw> _newAnswers)
         {
@@ -102,6 +114,20 @@ namespace Quick_Quiz.QuizTemplate
             currentIPictureGetterStringable = (Tpict)_pictureableStringable;
         }
 
-        
+        public int GetPointsOfAnswer()
+        {
+            //only for single:
+            return answeredItemSingle.GetAnswerPoint();
+        }
+
+        public void SetAnsweredStateByIAnswer(IAnswerItem _ianswerItem)
+        {
+            answeredItemSingle = (Tansw)_ianswerItem;
+        }
+
+        public void SetAnsweredStateByIAnswersList(IList<IAnswerItem> _ianswerItem)
+        {
+            answeredItemssList = (IList<Tansw>)_ianswerItem;
+        }
     }
 }
