@@ -83,6 +83,21 @@ namespace Quick_Quiz
         {
             return (IList<IAnswerItem>)answersList;
         }
+
+        public void SetAnsweredStateByIAnswer(IAnswerItem _ianswerItem)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void SetAnsweredStateByIAnswersList(IList<IAnswerItem> _ianswerItem)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public int GetPointsOfAnswer()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
     public class PddAnswerItem : IAnswerItem

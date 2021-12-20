@@ -56,5 +56,12 @@ namespace DotNetExtra.CustomUtilities
         {
             return source.OrderBy(x => Guid.NewGuid());
         }
+
+        //NEW
+        public static IEnumerable<T> GetRandomItems<T>(IEnumerable<T> source, int count)
+        {
+            return source.Shuffle().Take(count);
+        }
+
     }
 }

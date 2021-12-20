@@ -38,9 +38,8 @@ namespace Quick_Quiz.QuizTemplate
         private bool isAnsweredState;
 
         //new
-        public IList<Tansw> answeredItemssList { get; set; }
-        public Tansw answeredItemSingle { get; set; }
-
+        private IList<Tansw> answeredItemssList;
+        private Tansw answeredItemSingle;
 
         public IQuestionItem<Tansw> SetAnswersList(IList<Tansw> _newAnswers)
         {

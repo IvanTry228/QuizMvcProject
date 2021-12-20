@@ -1,8 +1,6 @@
-﻿using Quick_Quiz.QuizTemplate;
-using System;
+﻿using DotNetExtra.DataBaseParsing;
+using Quick_Quiz.QuizTemplate;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace QuizMvcProject.Models
 {
@@ -13,6 +11,27 @@ namespace QuizMvcProject.Models
         public QuizBase GetQuizBase()
         {
             return currentQuiz;
+        }
+
+        public void FastFillRandom()
+        {
+            List<IQuestionItem> randomedQuestionsItems = new List<IQuestionItem>();
+                
+            var PddQuizQuestions = HolderDataNewPdd.GetRandomQuestionsForQuiz();
+
+            foreach (var item in PddQuizQuestions)
+            {
+                randomedQuestionsItems.Add(item);
+            }
+
+            currentQuiz = new QuizBase();
+            currentQuiz.SetQuestionsList(randomedQuestionsItems);
+        }
+
+        public QuizPageModel(bool isRandomInit)
+        {
+            if (isRandomInit)
+                FastFillRandom();
         }
     }
 }

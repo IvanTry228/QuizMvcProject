@@ -32,12 +32,17 @@ namespace Quick_Quiz.QuizTemplate
 
         public void CallConsoleLog()
         {
+            Console.WriteLine(GetLogString());
+        }
+
+        public string GetLogString()
+        {
             string testLog = "QuizBase test log QuestionsCount = " + GetAllQuestionsCount() + "\n";
             foreach (var item in questionsItems)
             {
                 testLog += item.GetQuestionText() + " isAnswered : " + item.GetAnsweredState();
             }
-            Console.WriteLine(testLog);
+            return testLog;
         }
 
         public int GetAllAnsweredCount()

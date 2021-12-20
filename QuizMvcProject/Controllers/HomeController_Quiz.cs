@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Quick_Quiz.QuizTemplate;
 using QuizMvcProject.Models;
 using System;
 
@@ -47,7 +48,8 @@ namespace QuizMvcProject.Controllers
         public IActionResult QuizPage()
         {
             //MessageModel currentessage = new MessageModel("Qestion with current id not exist = " + id);
-            return View();
+            QuizPageModel fastQuizPageModel = new QuizPageModel(true);
+            return View(fastQuizPageModel);
         }
 
         //[HttpPost]
