@@ -108,6 +108,16 @@ namespace Quick_Quiz
         {
             throw new System.NotImplementedException();
         }
+
+        public IPictureGetterTypeStringable GetPictureGetter()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void SetPictureGetter(IPictureGetterTypeStringable _pictureableStringable)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
     public class PddAnswerItem : IAnswerItem

@@ -34,7 +34,7 @@
             <button type="button" class="btn btn-outline-secondary btn-lg btn-block">@item.GetAnswerText()</button>
         }
 
-        <img src="@currentQuestion.GetUrlRef()" alt="testUrl">
+        <img src="@currentQuestion.GetPictureGetter().GetPictureSourceString()" alt="testUrl">
 
     }
 

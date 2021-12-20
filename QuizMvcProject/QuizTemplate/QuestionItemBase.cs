@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Quick_Quiz.QuizTemplate
 {
-    public interface IQuestionItem  : IDable, IStatusQuestion //: IQuestionItem<T>
+    public interface IQuestionItem  : IDable, IStatusQuestion, IPictureble //: IQuestionItem<T>
     {
         string GetQuestionText();
         bool GetAnsweredState();
