@@ -8,30 +8,32 @@
     @*Quiz:*@
 
     @{
-        int bufferIndex = 0;
+        int bufferIndexAllQuestions = 0;
         foreach (var item in Model.GetQuizBase().GetQuestionsList())
         {
-            <a class="btn @item.GetStatusString()" href="/Home/QuizPage/@bufferIndex" role="button">@(bufferIndex + 1)</a>
+            <a class="btn @item.GetStatusString()" href="/Home/QuizPage/@bufferIndexAllQuestions" role="button">@(bufferIndexAllQuestions + 1)</a>
 
-            bufferIndex++;
+            bufferIndexAllQuestions++;
         }
     }
 
     @*Question:*@
     @{
         var currentQuestion = Model.GetQuizBase().GetCurrentQuestion();
-        int currentPointerIndex = Model.GetQuizBase().GetCurrenPointertIndex();
+        int currentPointerIndexQuestion = Model.GetQuizBase().GetCurrenPointertIndex();
     }
 
-    <h2>Current Question @(currentPointerIndex + 1)</h2>
+    <h2>Current Question @(currentPointerIndexQuestion + 1) / @Model.GetQuizBase().GetAllAnsweredCount()</h2>
     <h2>@currentQuestion.GetQuestionText()</h2>
 
     @{
         int currentIndexPointerQuestion = Model.GetQuizBase().GetCurrenPointertIndex();
-
+        int bufferIndexAnswers = 0;
         foreach (var item in currentQuestion.GetIAnswersListsOnly())
         {
-            <button type="button" class="btn btn-outline-secondary btn-lg btn-block">@item.GetAnswerText()</button>
+            <a class="btn btn btn-outline-secondary btn-lg btn-block" href="/Home/CallAnswerForQuestion/?_indexQuestion=@currentPointerIndexQuestion&_indexAnswer=@bufferIndexAnswers" role="button">@item.GetAnswerText()</a>
+            bufferIndexAnswers++;
+            @*<button type="button" class="btn btn-outline-secondary btn-lg btn-block">@item.GetAnswerText()</button>*@
         }
 
         <img src="@currentQuestion.GetPictureGetter().GetPictureSourceString()" alt="testUrl">

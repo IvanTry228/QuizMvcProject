@@ -27,6 +27,12 @@ namespace Quick_Quiz.QuizTemplate
 
         void CallNextIndex();
 
+        //new
+
+        void CallAnswerForQuestion(int _argIndexQuestion, int _argIndexAnswer);
+
+        void CallToAnswerFromAnswer(IQuestionItem _argQuestionItem, IAnswerItem _argAnswer);
+
         //Timer GetCurrentTimer();
     }
 
@@ -129,6 +135,22 @@ namespace Quick_Quiz.QuizTemplate
         public void SetCurrenPointertIndex(int _argIndex)
         {
             currentPointerIndex = _argIndex;
+        }
+
+        public void CallAnswerForQuestion(int _argIndexQuestion, int _argIndexAnswer)
+        {
+            IQuestionItem bufferQuestion = questionsItems[_argIndexQuestion];
+            IAnswerItem bufferAnswer = bufferQuestion.GetIAnswersListsOnly()[_argIndexAnswer];
+            CallToAnswerFromAnswer(questionsItems[_argIndexQuestion], bufferAnswer);
+        }
+
+        public void CallToAnswerFromAnswer(IQuestionItem _argQuestionItem, IAnswerItem _argAnswer)
+        {
+            if (_argQuestionItem.GetAnsweredState())
+                return;
+
+            _argQuestionItem.SetAnsweredState(true);
+            _argQuestionItem.SetAnsweredStateByIAnswer(_argAnswer);
         }
     }
 }

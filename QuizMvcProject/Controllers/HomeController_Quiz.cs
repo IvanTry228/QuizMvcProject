@@ -66,5 +66,15 @@ namespace QuizMvcProject.Controllers
             fastQuizPageModel.GetQuizBase().SetCurrenPointertIndex(id);
             return View(fastQuizPageModel);
         }
+
+        [HttpGet]
+        public IActionResult CallAnswerForQuestion(int _indexQuestion, int _indexAnswer)
+        {
+            Console.WriteLine("!_!!! CallAnswerForQuestion _indexQuestion = " + _indexQuestion + " _indexAnswer = " + _indexAnswer);
+            //MessageModel currentessage = new MessageModel("Qestion with current id not exist = " + id);
+            //fastQuizPageModel.GetQuizBase().SetCurrenPointertIndex(id);
+            fastQuizPageModel.GetQuizBase().CallAnswerForQuestion(_indexQuestion, _indexAnswer);
+            return RedirectToAction("QuizPage", new { id = fastQuizPageModel.GetQuizBase().GetCurrenPointertIndex() });
+        }
     }
 }
