@@ -18,17 +18,16 @@
     }
 
     @*Question:*@
+    @{var currentQuestion = Model.GetQuizBase().GetCurrentQuestion();
+        int currentPointerIndex = Model.GetQuizBase().GetCurrenPointertIndex();}
 
-    <h2>Current Question @(Model.GetQuizBase().GetCurrenPointertIndex() + 1)</h2>
-
-    <h2>Current Question @(Model.GetQuizBase().GetCurrenPointertIndex() + 1)</h2>
+    <h2>Current Question @(currentPointerIndex + 1)</h2>
+    <h2>@currentQuestion.GetQuestionText()</h2>
 
     @{
         int currentIndexPointerQuestion = Model.GetQuizBase().GetCurrenPointertIndex();
 
-        var currentQuestin = Model.GetQuizBase().GetCurrentQuestion();
-
-        foreach (var item in currentQuestin.GetIAnswersListsOnly())
+        foreach (var item in currentQuestion.GetIAnswersListsOnly())
         {
             <button type="button" class="btn btn-outline-secondary btn-lg btn-block">@item.GetAnswerText()</button>
         }
