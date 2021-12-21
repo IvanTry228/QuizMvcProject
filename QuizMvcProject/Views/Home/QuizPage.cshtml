@@ -34,17 +34,10 @@
         {
             <a class="btn btn @item.GetStatusString() btn-lg btn-block" href="/Home/CallAnswerForQuestion/?_indexQuestion=@currentPointerIndexQuestion&_indexAnswer=@bufferIndexAnswers&_hashCode=@customIdCode" role="button">@item.GetAnswerText()</a>
             bufferIndexAnswers++;
-            @*<button type="button" class="btn btn-outline-secondary btn-lg btn-block">@item.GetAnswerText()</button>*@
         }
 
         <img src="@currentQuestion.GetPictureGetter().GetPictureSourceString()" alt="testUrl">
 
     }
-
-    @*<button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
-        <button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>*@
-
-
-    <h2>@Model.GetQuizBase().GetLogString()</h2>
 
 </div>

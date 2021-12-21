@@ -15,32 +15,23 @@
     <h2>@currentQuestion.GetQuestionText()</h2>
 </div>
 
-
-
 <div class="container">
     <div class="row">
         <div class="col">
             @{
-                //int currentIndexPointerQuestion = Model.GetQuizBase().GetCurrenPointertIndex();
                 int bufferIndexAnswers = 0;
                 foreach (var item in currentQuestion.GetIAnswersListsOnly())
                 {
                     <a class="btn btn @item.GetStatusString() btn-lg btn-block"
-                       href="/Home/CallAnswerForQuestion/?_indexQuestion=@currentQUestionId&_indexAnswer=@bufferIndexAnswers&_hashCode=-1"
+                       href="/Home/QuestionCheckAnswer/?_idQuestion=@currentQUestionId&_indexAnswer=@bufferIndexAnswers"
                        role="button">@item.GetAnswerText()</a>
 
                     bufferIndexAnswers++;
-                    @*<button type="button" class="btn btn-outline-secondary btn-lg btn-block">@item.GetAnswerText()</button>*@
                 }
-
-                @*<img src="@currentQuestion.GetPictureGetter().GetPictureSourceString()" alt="testUrl">*@
-
             }
         </div>
         <div class="col">
-            <img src="@currentQuestion.GetPictureGetter().GetPictureSourceString()" alt="...">
+            <img src="@currentQuestion.GetPictureGetter().GetPictureSourceString()" class="rounded float" width="450" alt="...">
         </div>
     </div>
 </div>
-
-<script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-post="vlblyadstvo/2" data-width="100%"></script>

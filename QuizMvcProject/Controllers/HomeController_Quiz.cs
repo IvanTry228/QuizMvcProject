@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DotNetExtra.DataBaseParsing;
+using Microsoft.AspNetCore.Mvc;
 using Quick_Quiz.QuizTemplate;
 using QuizMvcProject.Models;
 using QuizMvcProject.QuizImplementation;
@@ -11,7 +12,7 @@ namespace QuizMvcProject.Controllers
         public IActionResult Question(int id)
         {
             bool isFindedResult = true;
-            Console.WriteLine("Entered Question isFindedResult = " + isFindedResult + " id =" + id);
+            Console.WriteLine("Entered Question isFindedResult = " + isFindedResult + " id = " + id);
 
             QuestionModel bufferModel = new QuestionModel(id);
             
@@ -26,6 +27,21 @@ namespace QuizMvcProject.Controllers
                 return View(bufferModel);
             else
                 return RedirectToAction("QuestionNotExist", id);
+        }
+
+        public IActionResult QuestionCheckAnswer(int _idQuestion, int _indexAnswer)
+        {
+            Console.WriteLine("QuestionCheckAnswer _idQuestion = " + _idQuestion + " _indexAnswer =" + _indexAnswer);
+
+            IQuestionItem bufferQuestion = HolderDataNewPdd.TryGetQuestion(_idQuestion);
+
+            if (bufferQuestion.GetAnsweredState())
+                return RedirectToAction("Question"); //random
+
+            bufferQuestion.SetAnsweredState(true);
+            bufferQuestion.SetAnsweredStateByIAnswer(bufferQuestion.GetIAnswersListsOnly()[_indexAnswer]);
+
+            return RedirectToAction("Question", new { id = _idQuestion });
         }
 
         [HttpGet]
