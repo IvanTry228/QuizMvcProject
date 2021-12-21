@@ -30,7 +30,7 @@
         int bufferIndexAnswers = 0;
         foreach (var item in currentQuestion.GetIAnswersListsOnly())
         {
-            <a class="btn btn btn-outline-secondary btn-lg btn-block" href="/Home/CallAnswerForQuestion/?_indexQuestion=@currentPointerIndexQuestion&_indexAnswer=@bufferIndexAnswers" role="button">@item.GetAnswerText()</a>
+            <a class="btn btn @item.GetStatusString() btn-lg btn-block" href="/Home/CallAnswerForQuestion/?_indexQuestion=@currentPointerIndexQuestion&_indexAnswer=@bufferIndexAnswers" role="button">@item.GetAnswerText()</a>
             bufferIndexAnswers++;
             @*<button type="button" class="btn btn-outline-secondary btn-lg btn-block">@item.GetAnswerText()</button>*@
         }
