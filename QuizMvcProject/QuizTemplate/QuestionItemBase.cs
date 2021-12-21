@@ -19,6 +19,8 @@ namespace Quick_Quiz.QuizTemplate
         void SetAnsweredStateByIAnswersList(IList<IAnswerItem> _ianswerItem);
 
         int GetPointsOfAnswer();
+
+        IAnswerItem GetAnsweredItem();
     }
 
     public interface IQuestionItem<Tansw> : IQuestionItem where Tansw : IAnswerItem
@@ -40,7 +42,7 @@ namespace Quick_Quiz.QuizTemplate
         private bool isAnsweredState;
 
         //new
-        private IList<Tansw> answeredItemssList;
+        private IList<Tansw> answeredItemssList; //in future for multiply
         private Tansw answeredItemSingle;
 
         public IQuestionItem<Tansw> SetAnswersList(IList<Tansw> _newAnswers)
@@ -151,7 +153,12 @@ namespace Quick_Quiz.QuizTemplate
 
         public virtual string GetStatusString()
         {
-            return ViewQuizDictionary.AllButtonsNames[GetIndexStatusQuestion()];
+            return ViewQuizDictionary.AllMiniButtonsViews[GetIndexStatusQuestion()];
+        }
+
+        public IAnswerItem GetAnsweredItem()
+        {
+            return answeredItemSingle;
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿namespace Quick_Quiz.QuizTemplate
+﻿using QuizMvcProject.QuizImplementation;
+using QuizMvcProject.QuizTemplate;
+
+namespace Quick_Quiz.QuizTemplate
 {
     public static class QuizStatic
     {
@@ -11,7 +14,7 @@
         void CallConsoleLog();
     }
 
-    public interface IAnswerItem
+    public interface IAnswerItem : IStatusQuestion
     {
         //getters:
         string GetAnswerText();
@@ -66,6 +69,33 @@
         {
             answerText = _newText;
             return this;
+        }
+
+        public int GetIndexStatusQuestion()
+        {
+            int statusIndex;
+
+            if (CurrentQuestion.GetAnsweredState())
+            {
+                int pointOfAnswer = CurrentQuestion.GetPointsOfAnswer();
+                IAnswerItem answeredItem = CurrentQuestion.GetAnsweredItem();
+                if (pointOfAnswer <= 0)
+                    statusIndex = (int)StatusQuestionAnswered.Wrong;
+                else
+                    statusIndex = (int)StatusQuestionAnswered.Success;
+
+                if(this != answeredItem)
+                    statusIndex = (int)StatusQuestionAnswered.DefaultNot;
+            }
+            else
+                statusIndex = (int)StatusQuestionAnswered.DefaultNot;
+
+            return statusIndex;
+        }
+
+        public virtual string GetStatusString()
+        {
+            return ViewQuizDictionary.AllAnswersButtonsViews[GetIndexStatusQuestion()];
         }
     }
 }

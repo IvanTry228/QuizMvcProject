@@ -6,7 +6,7 @@ namespace Quick_Quiz
     public class PddQuestion : IQuestionItem<IAnswerItem>, IPictureGetterTypeStringable
     {
         public int questId { get; set; }
-        public string questText { get; set; }
+        public string QuestText { get; set; }
 
         public string[] questAnswers = new string[] { }; //old
 
@@ -21,7 +21,7 @@ namespace Quick_Quiz
         public PddQuestion(int _questId, string _questText, string[] _questAnswers, int _questAmountAnswers, string _urlPicture)
         {
             questId = _questId;
-            questText = _questText;
+            QuestText = _questText;
             questAnswers = _questAnswers;
             questAmountAnswers = _questAmountAnswers;
             urlPicture = _urlPicture;
@@ -40,12 +40,12 @@ namespace Quick_Quiz
 
         public string GetQuestionText()
         {
-            return questText;
+            return QuestText;
         }
 
         public IQuestionItem<IAnswerItem> SetQuestionText(string _questionText)
         {
-            questText = _questionText;
+            QuestText = _questionText;
             return this;
         }
 
@@ -118,6 +118,11 @@ namespace Quick_Quiz
         {
             throw new System.NotImplementedException();
         }
+
+        public IAnswerItem GetAnsweredItem()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
     public class PddAnswerItem : IAnswerItem
@@ -138,6 +143,16 @@ namespace Quick_Quiz
         public string GetAnswerText()
         {
             return currentAnswerText;
+        }
+
+        public int GetIndexStatusQuestion()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public string GetStatusString()
+        {
+            throw new System.NotImplementedException();
         }
 
         public IAnswerItem SetAnswerPoints(int _newPoints)
