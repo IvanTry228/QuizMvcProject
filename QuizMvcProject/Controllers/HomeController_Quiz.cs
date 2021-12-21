@@ -52,7 +52,7 @@ namespace QuizMvcProject.Controllers
             //MessageModel currentessage = new MessageModel("Qestion with current id not exist = " + id);
             Console.WriteLine("!!!!!!!!!!!___!!! GetRandomQuiz ");
 
-            //fastQuizPageModel = new QuizPageModel(true);
+            fastQuizPageModel = new QuizPageModel(true);
             int defaultId = 0;
             fastQuizPageModel.GetQuizBase().SetCurrenPointertIndex(defaultId);
             return RedirectToAction("QuizPage", new { id = defaultId });
