@@ -5,8 +5,26 @@ using System.Collections.Generic;
 
 namespace QuizMvcProject.Models
 {
-    public class QuizPageModel
+    public interface IHashCodeIntable
     {
+        int GetHashCodeCustom();
+        void SetHashCodeCustom(int _hashCode);
+    }
+
+    public class QuizPageModel : IHashCodeIntable
+    {
+        public int fastHashCode = -2;
+
+        public int GetHashCodeCustom()
+        {
+            return fastHashCode;
+        }
+
+        public void SetHashCodeCustom(int _hashCode)
+        {
+            fastHashCode = _hashCode;
+        }
+
         private QuizBase currentQuiz;
 
         public QuizBase GetQuizBase()
@@ -28,6 +46,8 @@ namespace QuizMvcProject.Models
             currentQuiz = new QuizBase();
             currentQuiz.SetQuestionsList(randomedQuestionsItems);
         }
+
+        
 
         public QuizPageModel(bool isRandomInit)
         {
