@@ -8,6 +8,11 @@ namespace QuizMvcProject.QuizImplementation
 {
     public class QuizModelsPoolManager
     {
+        public static QuizModelsPoolManager Instance { get { return _instanc; } }
+
+        private static QuizModelsPoolManager _instanc = new QuizModelsPoolManager();
+
+
         private Queue<QuizPageModel> allQuizPagesModelsHolders = new Queue<QuizPageModel>();
 
         private Dictionary<int, QuizPageModel> quizModelsDictionary = new Dictionary<int, QuizPageModel>();
