@@ -25,7 +25,7 @@ namespace QuizMvcProject.QuizImplementation
             int freeHashCode = GetFreeHashForDictionary();
             quizModelsDictionary.Add(freeHashCode, newBufferQuiz);
 
-            newBufferQuiz.SetHashCodeCustom(freeHashCode);
+            newBufferQuiz.SetCustomId(freeHashCode);
 
             hashCodeOut = freeHashCode;
             return newBufferQuiz;

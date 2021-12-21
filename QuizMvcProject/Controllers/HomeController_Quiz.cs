@@ -35,6 +35,13 @@ namespace QuizMvcProject.Controllers
             return View(currentessage);
         }
 
+        [HttpGet]
+        public IActionResult QuizHashCodeNotExist(int id)
+        {
+            MessageModel currentessage = new MessageModel("Quiz with request not exist = " + id);
+            return View(currentessage);
+        }
+
         [HttpPost]
         public IActionResult QuestionNotExist(string login, string password)
         {
@@ -67,6 +74,12 @@ namespace QuizMvcProject.Controllers
             //MessageModel currentessage = new MessageModel("Qestion with current id not exist = " + id);
 
             QuizPageModel fastQuizPageModel = QuizModelsPoolManager.Instance.GetQuizPageModelFrFromHash(hashCode); // new QuizPageModel(true);
+
+            if(fastQuizPageModel==null)
+            {
+                return RedirectToAction("QuizHashCodeNotExist", new { id = hashCode });
+            }
+
             fastQuizPageModel.GetQuizBase().SetCurrenPointertIndex(id);
 
             return View(fastQuizPageModel);
