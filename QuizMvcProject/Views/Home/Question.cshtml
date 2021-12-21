@@ -16,7 +16,7 @@
 
     <h2>Current Question id: @(currentQUestionId)</h2>
     <h2>@currentQuestion.GetQuestionText()</h2>
-
+    <img src="@currentQuestion.GetPictureGetter().GetPictureSourceString()" class="rounded float-right" alt="...">
     @{
         //int currentIndexPointerQuestion = Model.GetQuizBase().GetCurrenPointertIndex();
         int bufferIndexAnswers = 0;
@@ -30,7 +30,6 @@
             @*<button type="button" class="btn btn-outline-secondary btn-lg btn-block">@item.GetAnswerText()</button>*@
         }
 
-        <img src="@currentQuestion.GetPictureGetter().GetPictureSourceString()" class="rounded float-right" alt="...">
         @*<img src="@currentQuestion.GetPictureGetter().GetPictureSourceString()" alt="testUrl">*@
 
     }
