@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Quick_Quiz.QuizTemplate;
 using QuizMvcProject.Models;
+using QuizMvcProject.QuizImplementation;
 using System;
 
 namespace QuizMvcProject.Controllers
@@ -44,7 +45,7 @@ namespace QuizMvcProject.Controllers
             return RedirectToAction("Question", new { id = testInt });
         }
 
-        static QuizPageModel fastQuizPageModel = new QuizPageModel(true); //static for fast
+        //static QuizPageModel fastQuizPageModel = new QuizPageModel(true); //static for fast
 
         [HttpGet]
         public IActionResult GetRandomQuiz()
@@ -52,30 +53,36 @@ namespace QuizMvcProject.Controllers
             //MessageModel currentessage = new MessageModel("Qestion with current id not exist = " + id);
             Console.WriteLine("!!!!!!!!!!!___!!! GetRandomQuiz ");
 
-            fastQuizPageModel = new QuizPageModel(true);
+            int bufferHashCode = -1;
+            QuizPageModel fastQuizPageModel = QuizModelsPoolManager.Instance.GetQuizPageModelFree(out bufferHashCode); // new QuizPageModel(true);
             int defaultId = 0;
             fastQuizPageModel.GetQuizBase().SetCurrenPointertIndex(defaultId);
-            return RedirectToAction("QuizPage", new { id = defaultId });
+            return RedirectToAction("QuizPage", new { id = defaultId, hashCode = bufferHashCode });
         }
 
         [HttpGet]
-        public IActionResult QuizPage(int id)
+        public IActionResult QuizPage(int id, int hashCode)
         {
-            Console.WriteLine("!!!!!!!!!!!___!!! QuizPage id = " + id);
+            Console.WriteLine("!!!!!!!!!!!___!!! QuizPage id = " + id + " hashCode = " + hashCode);
             //MessageModel currentessage = new MessageModel("Qestion with current id not exist = " + id);
+
+            QuizPageModel fastQuizPageModel = QuizModelsPoolManager.Instance.GetQuizPageModelFrFromHash(hashCode); // new QuizPageModel(true);
             fastQuizPageModel.GetQuizBase().SetCurrenPointertIndex(id);
+
             return View(fastQuizPageModel);
         }
 
         [HttpGet]
-        public IActionResult CallAnswerForQuestion(int _indexQuestion, int _indexAnswer)
+        public IActionResult CallAnswerForQuestion(int _indexQuestion, int _indexAnswer, int _hashCode)
         {
-            Console.WriteLine("!_!!! CallAnswerForQuestion _indexQuestion = " + _indexQuestion + " _indexAnswer = " + _indexAnswer);
+            Console.WriteLine("!_!!! CallAnswerForQuestion _indexQuestion = " + _indexQuestion + " _indexAnswer = " + _indexAnswer + " _hashCode =" + _hashCode);
             //MessageModel currentessage = new MessageModel("Qestion with current id not exist = " + id);
             //fastQuizPageModel.GetQuizBase().SetCurrenPointertIndex(id);
+            //QuizPageModel fastQuizPageModel.GetQuizBase().CallAnswerForQuestion(_indexQuestion, _indexAnswer);
+            QuizPageModel fastQuizPageModel = QuizModelsPoolManager.Instance.GetQuizPageModelFrFromHash(_hashCode); // new QuizPageModel(true);
             fastQuizPageModel.GetQuizBase().CallAnswerForQuestion(_indexQuestion, _indexAnswer);
             fastQuizPageModel.GetQuizBase().CallNextIndex();
-            return RedirectToAction("QuizPage", new { id = fastQuizPageModel.GetQuizBase().GetCurrenPointertIndex() });
+            return RedirectToAction("QuizPage", new { id = fastQuizPageModel.GetQuizBase().GetCurrenPointertIndex(), hashCode = _hashCode });
         }
     }
 }
