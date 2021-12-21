@@ -7,102 +7,34 @@
             Model.testQuestionModelObj.FillRandom();
         }*@
 
-    <button type="button" class="btn">Basic</button>
-    <button type="button" class="btn btn-default">Default</button>
-    <button type="button" class="btn btn-primary">Primary</button>
-    <button type="button" class="btn btn-success">Success</button>
-    <button type="button" class="btn btn-info">Info</button>
-    <button type="button" class="btn btn-warning">Warning</button>
-    <button type="button" class="btn btn-danger">Danger</button>
-    <button type="button" class="btn btn-link">Link</button>
+    @*Question:*@
+    @{
+        var currentQuestion = Model.testQuestionModelObj.currentQuestion;
+        int currentQUestionId = currentQuestion.GetId();
+        //int currentPointerIndexQuestion = Model.GetQuizBase().GetCurrenPointertIndex();
+    }
 
-    <a href="#" class="btn btn-primary" role="button" data-bs-toggle="button">Toggle link</a>
-    <a href="#" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">Active toggle link</a>
-    <a class="btn btn-primary disabled" aria-disabled="true" role="button" data-bs-toggle="button">Disabled toggle link</a>
+    <h2>Current Question id: @(currentQUestionId)</h2>
+    <h2>@currentQuestion.GetQuestionText()</h2>
 
-    <div class="container">
-        <h2>Button Styles</h2>
-        @{
-            for (int i = 0; i < 20; i++)
-            {
-                <a class="btn btn-outline-secondary" href="" role="button">@(i+1)</a>
-            }
+    @{
+        //int currentIndexPointerQuestion = Model.GetQuizBase().GetCurrenPointertIndex();
+        int bufferIndexAnswers = 0;
+        foreach (var item in currentQuestion.GetIAnswersListsOnly())
+        {
+            <a class="btn btn @item.GetStatusString() btn-lg btn-block"
+               href="/Home/CallAnswerForQuestion/?_indexQuestion=@currentQUestionId&_indexAnswer=@bufferIndexAnswers&_hashCode=-1"
+               role="button">@item.GetAnswerText()</a>
+
+            bufferIndexAnswers++;
+            @*<button type="button" class="btn btn-outline-secondary btn-lg btn-block">@item.GetAnswerText()</button>*@
         }
 
-        <a class="btn btn-primary" href="/Home/Question" role="button">Link</a>
+        <img src="@currentQuestion.GetPictureGetter().GetPictureSourceString()" class="rounded float-right" alt="...">
+        @*<img src="@currentQuestion.GetPictureGetter().GetPictureSourceString()" alt="testUrl">*@
 
-        <div class="ui-grid-b">
-            <div class="ui-block-a"><a href="#" class="ui-shadow ui-btn ui-corner-all">Anchor</a></div>
-            <div class="ui-block-b"><div class="button-wrap"><button class="ui-shadow ui-btn ui-corner-all">Button</button></div></div>
-            <div class="ui-block-c"><input type="button" value="Input"></div>
-        </div>
-        <form class="ui-grid-b">
-            <div class="ui-block-a">
-                <label for="grid-select-1" class="ui-hidden-accessible">Select</label>
-                <select id="grid-select-1" name="grid-select-1" data-shadow="false">
-                    <option>Select</option>
-                    <option value="1">The 1st Option</option>
-                    <option value="2">The 2nt Option</option>
-                    <option value="3">The 3rd Option</option>
-                    <option value="4">The 4th Option</option>
-                </select>
-            </div>
-            <div class="ui-block-b">
-                <label for="grid-checkbox-1">Checkbox</label>
-                <input type="checkbox" id="grid-checkbox-1" name="grid-checkbox-1">
-            </div>
-            <div class="ui-block-c">
-                <label for="grid-radio-1">Radio</label>
-                <input type="radio" id="grid-radio-1" name="grid-radio-1">
-            </div>
-        </form>
+    }
 
-        <div class="ui-grid-b ui-responsive">
-            <div class="ui-block-a"><a href="#" class="ui-btn ui-shadow ui-corner-all">Grid B</a></div>
-            <div class="ui-block-b"><a href="#" class="ui-btn ui-shadow ui-corner-all">Grid B</a></div>
-            <div class="ui-block-c"><a href="#" class="ui-btn ui-shadow ui-corner-all">Grid B</a></div>
-        </div>
-        <div class="ui-grid-a ui-responsive">
-            <div class="ui-block-a"><a href="#" class="ui-btn ui-shadow ui-corner-all">Grid A</a></div>
-            <div class="ui-block-b"><a href="#" class="ui-btn ui-shadow ui-corner-all">Grid A</a></div>
-        </div>
-        <div class="ui-grid-solo">
-            <div class="ui-block-a"><a href="#" class="ui-btn ui-shadow ui-corner-all">Grid Solo</a></div>
-        </div>
-        <br>
-        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-b">Outside the grid</a>
+    <script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-post="vlblyadstvo/2" data-width="100%"></script>
 
-        <div class="ui-grid-b ui-responsive">
-            <div class="ui-block-a"><a href="#" class="ui-btn ui-shadow ui-corner-all">Grid B</a></div>
-            <div class="ui-block-b"><a href="#" class="ui-btn ui-shadow ui-corner-all">Grid B</a></div>
-            <div class="ui-block-c"><a href="#" class="ui-btn ui-shadow ui-corner-all">Grid B</a></div>
-        </div>
-
-
-        <h1 class="display-4">@Model.testQuestionModelObj.GetText()</h1>
-
-        <p>Станьте миллиардером: <a href="https://parimatch.com/">Вы лучше прожмите</a>.</p>
-
-        <img src="@Model.testQuestionModelObj.GetUrlRef()" alt="testUrl">
-
-        @{
-            foreach (var item in Model.testQuestionModelObj.GetVideosList())
-            {
-                <video preload="" muted="" autoplay="" loop="" playsinline="" poster="@item.urlPreviewImg" controls autoplay>
-                    <source src="@item.urlSourceVideo" type="video/mp4">
-                </video>
-
-                <video muted="" loop="" controls autoplay>
-                    <source src="@item.urlSourceVideo" type="video/mp4">
-                    <source src="@item.urlSourceVideo" type="video/ogg">
-                    Your browser does not support the video tag.
-                </video>
-            }
-        }
-
-        <video src="https://cdn4.telesco.pe/file/792db2cfe9.mp4?token=byc5ZvqmhmDBTcWdMVdGWQTU-VwV4g6sQHfKg8BC1EmHzRO2Sg-755d4pHuyWzKb-SbTGV0bU0_hfcXUAMW0mtSSQK3ZLPiwS_0TjJI2qExxxMWh2SgLhdLWeGe_5fOEq08v6MiOcYxLq08c_RyLHaG6k93LDvdZbevA9SjQQK4xYBV8K5wdukmKmeJPsLjtLqMUZNzJ56nSy00UuBjd9EAmYM4NNEV2MkjSjhWq4MrOgM__AJ_lDWFyTLYP00WI2tORIpzlKVHTnoqvuAPptFb3ljeSaIdTfLXyUzdHVAO2yr8LD9cB4hfTlEWYc5H9DhJCZAepdJ63GxF3IgVAmQ" width="100%" height="100%" preload="" muted="" autoplay="" loop="" playsinline=""></video>
-
-
-        <script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-post="vlblyadstvo/2" data-width="100%"></script>
-
-    </div>
+</div>

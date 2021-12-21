@@ -43,9 +43,9 @@ namespace QuizMvcProject.Controllers
         }
 
         [HttpPost]
-        public IActionResult QuestionNotExist(string id)
+        public IActionResult QuestionNotExist(string idstring)
         {
-            int parsedId = int.Parse(id);
+            int parsedId =  int.Parse(idstring);
             Console.WriteLine("QuestionNotExist parsedId = " + parsedId);
             return RedirectToAction("Question", new { id = parsedId });
         }
