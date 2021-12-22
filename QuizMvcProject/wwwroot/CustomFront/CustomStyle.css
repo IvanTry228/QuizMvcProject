@@ -1,3 +1,9 @@
-﻿body {
-    color:red
+﻿.customnew .btn .btn-outline-secondary {
+    background-color: #ff6a00;
+    border-color: #ff6a00;
+}
+
+.customselected {
+    border-color: #ff6a00;
+    border-width: 3px;
 }

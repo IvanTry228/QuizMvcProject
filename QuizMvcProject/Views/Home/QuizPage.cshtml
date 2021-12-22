@@ -8,12 +8,16 @@
     @*Quiz:*@
 
     @{
+        int curretPointerIndex = Model.GetQuizBase().GetCurrenPointertIndex();
         int customIdCode = Model.GetCustomId();
 
         int bufferIndexAllQuestions = 0;
         foreach (var item in Model.GetQuizBase().GetQuestionsList())
         {
-            <a class="btn @item.GetStatusString()" href="/Home/QuizPage/?id=@bufferIndexAllQuestions&hashCode=@customIdCode" role="button">@(bufferIndexAllQuestions + 1)</a>
+            string selectedParam = " customselected";
+            if (bufferIndexAllQuestions != curretPointerIndex)
+                selectedParam = "";
+            <a class="btn @item.GetStatusString()@selectedParam" href="/Home/QuizPage/?id=@bufferIndexAllQuestions&hashCode=@customIdCode" role="button">@(bufferIndexAllQuestions + 1)</a>
             bufferIndexAllQuestions++;
         }
     }
