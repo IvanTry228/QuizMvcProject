@@ -1,22 +1,22 @@
-﻿using DotNetExtra.DataBaseParsing;
-using Quick_Quiz.QuizTemplate;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using DotNetExtra.DataBaseParsing;
+using Quick_Quiz.QuizTemplate;
 
 namespace QuizMvcProject.Models
 {
     public class QuizPageModel : ICustomIdIntable
     {
-        public int fastHashCode = -2;
+        public int fastCustomcode = -2;
 
         public int GetCustomId()
         {
-            return fastHashCode;
+            return fastCustomcode;
         }
 
         public void SetCustomId(int _hashCode)
         {
-            fastHashCode = _hashCode;
+            fastCustomcode = _hashCode;
         }
 
         private QuizBase currentQuiz;
@@ -40,9 +40,6 @@ namespace QuizMvcProject.Models
             currentQuiz = new QuizBase();
             currentQuiz.SetQuestionsList(randomedQuestionsItems);
         }
-
-        
-
         public QuizPageModel(bool isRandomInit)
         {
             Console.WriteLine("--QuizPageModel--- isRandomInit =" + isRandomInit);

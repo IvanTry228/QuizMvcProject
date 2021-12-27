@@ -130,6 +130,11 @@ namespace Quick_Quiz.QuizTemplate
         public void CallNextIndex()
         {
             currentPointerIndex++;
+            //need to do
+            if(currentPointerIndex>=GetAllQuestionsCount())
+            {
+                currentPointerIndex = 0;
+            }
         }
 
         public void SetCurrenPointertIndex(int _argIndex)

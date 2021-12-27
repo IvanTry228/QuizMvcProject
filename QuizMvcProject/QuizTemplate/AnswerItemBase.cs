@@ -35,12 +35,6 @@ namespace Quick_Quiz.QuizTemplate
 
         public IQuestionItem CurrentQuestion { get; set; }
 
-        //public AnswerBase(string _answerText, int _answerPoints)
-        //{
-        //    answerStruct.answerText = _answerText;
-        //    answerStruct.answerPoints = _answerPoints;
-        //}
-
         //IAnswer:
         public virtual void FuncOnAnswered()
         {

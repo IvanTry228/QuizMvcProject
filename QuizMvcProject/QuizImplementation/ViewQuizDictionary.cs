@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace QuizMvcProject.QuizImplementation
+﻿namespace QuizMvcProject.QuizImplementation
 {
     public class ViewQuizDictionary
     {
@@ -14,6 +9,5 @@ namespace QuizMvcProject.QuizImplementation
         public static readonly string[] AllAnswersButtonsViews = new string[] { "btn-outline-secondary",
                                                                                 "btn-outline-success",
                                                                                  "btn-outline-danger"};
-
     }
 }
